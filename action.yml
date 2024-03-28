@@ -1,0 +1,72 @@
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Deploy GKE
+description: |-
+  Use gke-deploy cli to deploy an image
+author: Google LLC
+
+inputs:
+  image:
+    description: |-
+      Image to be deployed
+    required: true
+
+  app_name:
+    description: |-
+      Application name of the Kubernetes deployment
+    required: true
+
+  region:
+    description: |-
+      Region/zone of GKE cluster to deploy to.
+    required: true
+
+  cluster_name:
+    description: |-
+      Name of GKE cluster to deploy to.
+    required: true
+
+  project_id:
+    description: |-
+      Project of GKE cluster to deploy to.
+    required: true
+
+  namespace:
+    description: |-
+      Namespace of GKE cluster to deploy to.
+      If not provided, it will not be passed to the binary. 
+    required: false
+
+  expose:
+    description: |-
+      The port provided will be used to expose the deployed workload object (i.e., port and targetPort will be set to the value provided in this flag). 
+      If not provided, it will not be passed to the binary.
+    required: false
+
+branding:
+  icon: 'lock'
+  color: 'blue'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.image }}
+    - ${{ inputs.app_name }}
+    - ${{ inputs.region }}
+    - ${{ inputs.cluster_name }}
+    - ${{ inputs.project_id }}
+    - ${{ inputs.namespace }}
+    - ${{ inputs.expose }}
