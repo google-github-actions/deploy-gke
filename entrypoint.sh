@@ -44,5 +44,8 @@ fi
 
 # Utilize Google APIs user agent for metrics with the following unique identifier:
 export GOOGLE_APIS_USER_AGENT=google-github-action:deploy-gke/$gha_version
+export CLOUDSDK_CORE_DISABLE_PROMPTS=1
+export CLOUDSDK_METRICS_ENVIRONMENT=google-github-actions-deploy-gke
+export CLOUDSDK_METRICS_ENVIRONMENT_VERSION=$gha_version
 
 $gke_deploy_command
