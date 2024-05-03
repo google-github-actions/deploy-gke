@@ -74,3 +74,4 @@ jobs:
       shell: bash
       run: |
         kubectl get deployment -n ${{ vars.NAMESPACE }}
+        kubectl get service -n ${{ vars.NAMESPACE }}
