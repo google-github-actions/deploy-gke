@@ -15,7 +15,6 @@
 #!/bin/sh -l
 
 gha_version="0.1.0"
-gke_deploy_command="gke-deploy run -i $image -a $app_name -l $location -c $cluster_name -p $project_id"
 
 image="$1"
 app_name="$2"
@@ -24,6 +23,8 @@ cluster_name="$4"
 project_id="$5"
 namespace="$6"
 expose_port="$7"
+
+gke_deploy_command="gke-deploy run -i $image -a $app_name -l $location -c $cluster_name -p $project_id"
 
 # Ensure all required variables are provided by workflow users.
 if [ -z "$image" ] || [ -z "$app_name" ] || [ -z "$location" ] || [ -z "$cluster_name" ] || [ -z "$project_id" ]; then
