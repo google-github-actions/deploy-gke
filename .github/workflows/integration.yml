@@ -56,7 +56,6 @@ jobs:
         cluster_name: '${{ vars.CLUSTER_NAME }}'
         project_id: '${{ vars.PROJECT_ID }}'
         namespace: '${{ vars.NAMESPACE }}'
-        expose: '${{ vars.EXPOSE }}'
 
     - name: 'get credentials'
       uses: 'google-github-actions/get-gke-credentials@v2'
