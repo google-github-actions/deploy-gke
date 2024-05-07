@@ -1,0 +1,7 @@
+{
+  "name": "deploy-gke",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "exit 0"
+  }
+}
