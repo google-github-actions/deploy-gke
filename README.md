@@ -38,6 +38,7 @@ jobs:
         project_id: 'my-project'
         namespace: 'my-namespace'
         expose: '8000'
+        k8s_manifests: 'configs'
     
     - name: 'get-deployments'
       shell: bash
@@ -65,3 +66,9 @@ jobs:
 - `expose` - (Optional) The port provided will be used to expose the deployed
    workload object (i.e., port and targetPort will be set to the value provided
    in this flag). If not provided, it will not be passed to the binary.
+
+- `k8s_manifests` - (Optional) Local or GCS path to configuration file or
+   directory of configuration files to use to create Kubernetes objects
+   (file or files in directory must end in ".yml" or ".yaml").
+   Prefix this value with "gs://" to indicate a GCS path.
+   If not provided, it will not be passed to the binary.

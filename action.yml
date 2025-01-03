@@ -55,6 +55,13 @@ inputs:
       If not provided, it will not be passed to the binary.
     required: false
 
+  k8s_manifests:
+    description: |-
+      Local or GCS path to configuration file or directory of configuration files to use to create Kubernetes objects (file or files in directory must end in ".yml" or ".yaml").
+      Prefix this value with "gs://" to indicate a GCS path.
+      If not provided, it will not be passed to the binary.
+    required: false
+
 branding:
   icon: 'lock'
   color: 'blue'
