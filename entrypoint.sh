@@ -23,6 +23,7 @@ cluster_name="$4"
 project_id="$5"
 namespace="$6"
 expose_port="$7"
+k8s_manifests="$8"
 
 gke_deploy_command="gke-deploy run -i $image -a $app_name -l $location -c $cluster_name -p $project_id"
 
@@ -40,6 +41,11 @@ fi
 # Add expose port if the input is apparent.
 if [ -n "$expose_port" ]; then
   gke_deploy_command="$gke_deploy_command -x $expose_port"
+fi
+
+# Add k8s manifests file(s) if the input is apparent.
+if [ -n "$k8s_manifests" ]; then
+  gke_deploy_command="$gke_deploy_command -f $k8s_manifests"
 fi
 
 # Utilize Google APIs user agent for metrics with the following unique identifier:
