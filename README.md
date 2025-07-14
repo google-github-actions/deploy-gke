@@ -29,7 +29,7 @@ jobs:
         workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
 
     - name: 'deploy with gke-deploy cli'
-      uses: 'google-github-actions/deploy-gke-container@v0.1'
+      uses: 'google-github-actions/deploy-gke@v0'
       with:
         image: 'my-image'
         app_name: 'my-app'
