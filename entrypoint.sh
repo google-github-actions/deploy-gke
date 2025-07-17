@@ -16,39 +16,39 @@
 
 gha_version="0.1.0"
 
-image="$1"
-app_name="$2"
-location="$3"
-cluster_name="$4"
-project_id="$5"
-namespace="$6"
-expose_port="$7"
-k8s_manifests="$8"
+image="${1}"
+app_name="${2}"
+location="${3}"
+cluster_name="${4}"
+project_id="${5}"
+namespace="${6}"
+expose_port="${7}"
+k8s_manifests="${8}"
 
-gke_deploy_command="gke-deploy run -i $image -a $app_name -l $location -c $cluster_name -p $project_id"
+gke_deploy_command="gke-deploy run -i ${image} -a ${app_name} -l ${location} -c ${cluster_name} -p ${project_id}"
 
 # Ensure all required variables are provided by workflow users.
-if [ -z "$image" ] || [ -z "$app_name" ] || [ -z "$location" ] || [ -z "$cluster_name" ] || [ -z "$project_id" ]; then
+if [ -z "${image}" ] || [ -z "${app_name}" ] || [ -z "${location}" ] || [ -z "${cluster_name}" ] || [ -z "${project_id}" ]; then
   echo "Error: Required variables (image, app_name, location, cluster_name, project_id) are not set."
   exit 1
 fi
 
 # Add namespace if the input is apparent.
-if [ -n "$namespace" ]; then
-  gke_deploy_command="$gke_deploy_command -n $namespace"
+if [ -n "${namespace}" ]; then
+  gke_deploy_command="${gke_deploy_command} -n ${namespace}"
 fi
 
 # Add expose port if the input is apparent.
-if [ -n "$expose_port" ]; then
-  gke_deploy_command="$gke_deploy_command -x $expose_port"
+if [ -n "${expose_port}" ]; then
+  gke_deploy_command="${gke_deploy_command} -x ${expose_port}"
 fi
 
 # Add k8s manifests file(s) if the input is apparent.
-if [ -n "$k8s_manifests" ]; then
-  gke_deploy_command="$gke_deploy_command -f $k8s_manifests"
+if [ -n "${k8s_manifests}" ]; then
+  gke_deploy_command="${gke_deploy_command} -f ${k8s_manifests}"
 fi
 
 # Utilize Google APIs user agent for metrics with the following unique identifier:
-export GOOGLE_APIS_USER_AGENT=google-github-action:deploy-gke/$gha_version
+export GOOGLE_APIS_USER_AGENT="google-github-action:deploy-gke/${gha_version}"
 
-$gke_deploy_command
+${gke_deploy_command}
