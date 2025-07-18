@@ -33,6 +33,10 @@ permissions:
   contents: 'read'
   id-token: 'write'
 
+defaults:
+  run:
+    shell: 'bash'
+
 jobs:
   integration:
     if: |-
