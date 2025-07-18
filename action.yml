@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Deploy GKE
+name: 'Deploy GKE'
 description: |-
   Use gke-deploy cli to deploy an image
-author: Google LLC
+author: 'Google LLC'
 
 inputs:
   image:
@@ -46,12 +46,12 @@ inputs:
   namespace:
     description: |-
       Namespace of GKE cluster to deploy to.
-      If not provided, it will not be passed to the binary. 
+      If not provided, it will not be passed to the binary.
     required: false
 
   expose:
     description: |-
-      The port provided will be used to expose the deployed workload object (i.e., port and targetPort will be set to the value provided in this flag). 
+      The port provided will be used to expose the deployed workload object (i.e., port and targetPort will be set to the value provided in this flag).
       If not provided, it will not be passed to the binary.
     required: false
 
@@ -70,10 +70,10 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.image }}
-    - ${{ inputs.app_name }}
-    - ${{ inputs.region }}
-    - ${{ inputs.cluster_name }}
-    - ${{ inputs.project_id }}
-    - ${{ inputs.namespace }}
-    - ${{ inputs.expose }}
+    - '${{ inputs.image }}'
+    - '${{ inputs.app_name }}'
+    - '${{ inputs.region }}'
+    - '${{ inputs.cluster_name }}'
+    - '${{ inputs.project_id }}'
+    - '${{ inputs.namespace }}'
+    - '${{ inputs.expose }}'
