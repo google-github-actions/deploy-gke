@@ -24,7 +24,7 @@ jobs:
 
     steps:
     - id: 'auth'
-      uses: 'google-github-actions/auth@v2'
+      uses: 'google-github-actions/auth@v3'
       with:
         workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
 
@@ -39,7 +39,7 @@ jobs:
         namespace: 'my-namespace'
         expose: '8000'
         k8s_manifests: 'configs'
-    
+
     - name: 'get-deployments'
       shell: bash
       run: |
@@ -61,7 +61,7 @@ jobs:
 - `project_id` - (Required) Project ID where the cluster is deployed.
 
 - `namespace` - (Optional) Namespace of GKE cluster to deploy to.
-    If not provided, it will not be passed to the binary. 
+    If not provided, it will not be passed to the binary.
 
 - `expose` - (Optional) The port provided will be used to expose the deployed
    workload object (i.e., port and targetPort will be set to the value provided
