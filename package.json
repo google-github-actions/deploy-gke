@@ -2,8 +2,8 @@
   "name": "deploy-gke",
   "version": "0.0.4",
   "engines": {
-    "node": "20.x",
-    "npm": "10.x"
+    "node": ">= 24.x",
+    "npm": ">= 11.x"
   },
   "scripts": {
     "build": "exit 0"
